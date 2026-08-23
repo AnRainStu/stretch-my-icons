@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Forms = System.Windows.Forms;
 using DrawingIcon = System.Drawing.Icon;
 
 namespace StretchMyIcons;
@@ -25,7 +24,6 @@ public partial class MainWindow : Window
 
     private void WindowLoaded(object sender, RoutedEventArgs e)
     {
-        PositionAtBottomLeft();
         RenderTiles();
     }
 
@@ -66,6 +64,7 @@ public partial class MainWindow : Window
             tile.Click += TileClicked;
             TilePanel.Children.Add(tile);
         }
+        UpdateLayout();
         PositionAtBottomLeft();
     }
 
@@ -99,10 +98,9 @@ public partial class MainWindow : Window
 
     private void PositionAtBottomLeft()
     {
-        var workArea = Forms.Screen.PrimaryScreen?.WorkingArea;
-        if (workArea is null) return;
-        Left = workArea.Value.Left + 14;
-        Top = workArea.Value.Bottom - ActualHeight - 14;
+        var workArea = SystemParameters.WorkArea;
+        Left = workArea.Left + 14;
+        Top = workArea.Bottom - ActualHeight - 14;
     }
 
     private void CloseClicked(object sender, RoutedEventArgs e) => Close();

@@ -1,7 +1,7 @@
 <Window x:Class="StretchMyIcons.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
+        Title="stretch-my-icons" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
         AllowsTransparency="True" Background="Transparent" Topmost="True"
         SizeToContent="WidthAndHeight" Loaded="WindowLoaded">
     <Border Background="{StaticResource PanelBrush}" BorderBrush="#35FFFFFF"
