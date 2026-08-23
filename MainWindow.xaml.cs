@@ -1,12 +1,11 @@
-using System.Drawing;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Forms = System.Windows.Forms;
+using DrawingIcon = System.Drawing.Icon;
 
 namespace StretchMyIcons;
 
@@ -47,21 +46,21 @@ public partial class MainWindow : Window
         TilePanel.Children.Clear();
         foreach (var item in shortcuts.Take(24))
         {
-            var tile = new Button
+            var tile = new System.Windows.Controls.Button
             {
                 Width = columns * TileSize + (columns - 1) * Gap,
                 Height = rows * TileSize + (rows - 1) * Gap,
                 Margin = new Thickness(0, 0, Gap, Gap),
                 Padding = new Thickness(8),
-                Background = (Brush)FindResource("TileBrush"),
-                Foreground = (Brush)FindResource("TextBrush"),
+                Background = (System.Windows.Media.Brush)FindResource("TileBrush"),
+                Foreground = (System.Windows.Media.Brush)FindResource("TextBrush"),
                 BorderThickness = new Thickness(0),
                 ToolTip = item.Name,
                 Tag = item.Path
             };
             var content = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
             var icon = TryGetIcon(item.Path);
-            if (icon is not null) content.Children.Add(new Image { Source = icon, Width = 32, Height = 32, Margin = new Thickness(0, 0, 0, 5) });
+            if (icon is not null) content.Children.Add(new System.Windows.Controls.Image { Source = icon, Width = 32, Height = 32, Margin = new Thickness(0, 0, 0, 5) });
             content.Children.Add(new TextBlock { Text = item.Name, TextAlignment = TextAlignment.Center, TextWrapping = TextWrapping.Wrap, MaxHeight = 34 });
             tile.Content = content;
             tile.Click += TileClicked;
@@ -74,7 +73,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            using var icon = Icon.ExtractAssociatedIcon(path);
+            using var icon = DrawingIcon.ExtractAssociatedIcon(path);
             if (icon is null) return null;
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromWidthAndHeight(32, 32));
         }
@@ -83,7 +82,7 @@ public partial class MainWindow : Window
 
     private void TileClicked(object sender, RoutedEventArgs e)
     {
-        if (sender is Button { Tag: string path })
+        if (sender is System.Windows.Controls.Button { Tag: string path })
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true });
     }
 
