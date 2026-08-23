@@ -135,4 +135,6 @@ The first executable prototype is a WPF desktop shortcut panel. It reads `.lnk` 
 
 Grid presets currently include `1x1`, `1x2`, `2x1`, `2x2`, `1x3`, and `3x1`. A tile always occupies an integer number of the same base grid cells, so its width and height remain aligned with the panel grid.
 
+Each tile now derives a fill color from its shortcut icon. The fill uses a light-to-dark diagonal material, and the label automatically switches between black and white for contrast. Press and hover feedback uses a short, interruptible scale response.
+
 This version is intentionally a launcher-layer prototype. It does not yet resize the native Explorer desktop icons. That integration is the next phase and requires Win32 `SysListView32` inspection, DPI-aware coordinate conversion, and a background layer that remains behind the native icon list.

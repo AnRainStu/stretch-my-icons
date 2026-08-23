@@ -1,11 +1,9 @@
 <Application x:Class="StretchMyIcons.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             ShutdownMode="OnMainWindowClose">
+             ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <SolidColorBrush x:Key="PanelBrush" Color="#E8171A20" />
-        <SolidColorBrush x:Key="TileBrush" Color="#FF252A33" />
-        <SolidColorBrush x:Key="TileHoverBrush" Color="#FF39414D" />
         <SolidColorBrush x:Key="TextBrush" Color="#FFF3F4F6" />
         <SolidColorBrush x:Key="MutedBrush" Color="#FFA9B0BC" />
     </Application.Resources>

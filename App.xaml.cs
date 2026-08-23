@@ -4,10 +4,12 @@ namespace StretchMyIcons;
 
 public partial class App : System.Windows.Application
 {
+    private DesktopOverlayHost? overlayHost;
+
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        MainWindow = new MainWindow();
-        MainWindow.Show();
+        overlayHost = new DesktopOverlayHost();
+        overlayHost.Start();
     }
 }
