@@ -128,3 +128,11 @@ Windows デスクトップのアイコンを伸ばす試作。
 - Explorer の更新でデスクトップのウィンドウ構造が変わる可能性がある。
 - マルチモニター DPI でアイコン座標がずれる可能性がある。
 - アイコン背後の描画はちらつきや入力不具合を避ける必要がある。
+
+## Current MVP
+
+The first executable prototype is a WPF desktop shortcut panel. It reads `.lnk` and `.url` files from the user and public desktop, displays them as clickable tiles, and anchors the panel to the bottom-left of the primary work area.
+
+Grid presets currently include `1x1`, `1x2`, `2x1`, `2x2`, `1x3`, and `3x1`. A tile always occupies an integer number of the same base grid cells, so its width and height remain aligned with the panel grid.
+
+This version is intentionally a launcher-layer prototype. It does not yet resize the native Explorer desktop icons. That integration is the next phase and requires Win32 `SysListView32` inspection, DPI-aware coordinate conversion, and a background layer that remains behind the native icon list.
